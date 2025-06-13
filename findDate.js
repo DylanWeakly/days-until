@@ -1,5 +1,5 @@
 document.querySelector('.js-calculate-button').addEventListener('click', () => {
-    const input = document.querySelector('.js-target-date').value;
+    const input = document.querySelector('.js-date-input').value;
     const result = document.querySelector('.js-result');
 
     if (!input) {
@@ -16,8 +16,10 @@ document.querySelector('.js-calculate-button').addEventListener('click', () => {
     const one_day = 1000 * 60 * 60 * 24;
     const diff = Math.ceil((targetDate - today) / one_day);
 
-    if (diff > 0) {
-        result.textContent = `${diff} day(s) left until ${targetDate.toDateString()}.`;
+    if (diff > 1) {
+        result.textContent = `There are ${diff} days left until ${targetDate.toDateString()}.`;
+    } else if (diff === 1) {
+        result.textContent = `There is ${diff} day left until ${targetDate.toDateString()}!`;
     } else if (diff === 0) {
         result.textContent = `That's today!`
     } else {
